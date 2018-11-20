@@ -1,20 +1,96 @@
 <h1 class="text-center mb-4">Welcome to my todolist app</h1>
 
+<%= render 'layouts/task_form'  %>
 <!-- Tab links -->
 
 <div class="tab">
-  <button class="tablinks" onclick="openList(event, 'All')">All lists</button>
-  <button class="tablinks" onclick="openList(event, 'Image')">Images</button>
-  <button class="tablinks" onclick="openList(event, 'New')">New ToDo list</button>
+  <button class="tablinks" onclick="openList(event, 'Historical')">Historical Fiction</button>
+  <button class="tablinks" onclick="openList(event, 'Essay')">Essay</button>
+  <button class="tablinks" onclick="openList(event, 'Meta')">Meta Fiction</button>
 </div>
 
 <!-- Tab content -->
 <br>
-<div id="All" class="tabcontent">
-<%= render 'layouts/category'  %>
+<div id="Historical" class="tabcontent">
+  <ul>
+  <% @categories.where(id: 2).each do  |category|%>
+  <li><span class="badge badge-success" ><%= category.title %></span></li>
+  <div class="card">
+    <ul>
+      <% category.tasks.each do |task|  %>
+      <li>
+        <%= task.title  %>
+        <% unless task.deadline.nil? %>
+          , to read: <%= task.deadline.strftime('%D')  %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  </ul>
 </div>
 
-<div id="Image" class="tabcontent">
+<div id="Essay" class="tabcontent">
+<ul>
+  <% @categories.where(id: 3).each do  |category|%>
+  <li><span class="badge badge-success" ><%= category.title %></span></li>
+  <div class="card">
+    <ul>
+      <% category.tasks.each do |task|  %>
+      <li>
+        <%= task.title  %>
+        <% unless task.deadline.nil? %>
+          , to read: <%= task.deadline.strftime('%D')  %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  </ul>
+</div>
+
+<div id="Meta" class="tabcontent">
+<ul>
+  <% @categories.where(id: 8).each do  |category|%>
+  <li><span class="badge badge-success" ><%= category.title %></span></li>
+  <div class="card">
+    <ul>
+      <% category.tasks.each do |task|  %>
+      <li>
+        <%= task.title  %>
+        <% unless task.deadline.nil? %>
+          , to read: <%= task.deadline.strftime('%D')  %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  </ul>
+</div>
+
+<div class="container">
+  <ul>
+  <% @categories.each do  |category|%>
+  <li><span class="badge badge-success" ><%= category.title %></span></li>
+  <div class="card">
+    <ul>
+      <% category.tasks.each do |task|  %>
+      <li>
+        <%= task.title  %>
+        <% unless task.deadline.nil? %>
+          , to read: <%= task.deadline.strftime('%D')  %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  </ul>
+</div>
+
 <div class="container">
   <div class="row">
     <% @tasks.each do |task|  %>
@@ -26,9 +102,3 @@
     <% end %>
   </div>
 </div>
-</div>
-
-<div id="New" class="tabcontent">
-<%= render 'layouts/task_form'  %>
-</div>
-
