@@ -31,3 +31,11 @@
 <div id="ex2" class="modal">
 <%= render 'devise/sessions/newsession' %> 
 </div>
+
+<!-- script pour quitter le modal en cliquant en dehors -->
+<script type="text/javascript">
+  $(document).click(function(event) {
+  if (!$(event.target).closest(".modal,.js-open-modal").length) {
+    $("body").find(".modal").removeClass("visible");
+  }
+</script>
