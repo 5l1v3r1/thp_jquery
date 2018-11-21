@@ -1,9 +1,8 @@
 # Todolist
 
-# Heroku :
+# Heroku prod :
 
-Find this app online, hosted by Heroku
-https://gossip-project-omegad.herokuapp.com/
+https://thetodolistomegad.herokuapp.com/
 
 ## 📰 ToDolist
 
